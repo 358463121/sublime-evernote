@@ -1111,7 +1111,7 @@ class EvernoteInsertAttachment(EvernoteDoText):
             attr = {}
             mimet = None
             try:
-                if urllib.parse.urlparse(filename).scheme != "":
+                if urllib.parse.urlparse(filename).scheme != ""  and urllib.parse.urlparse(filename).scheme not in [chr(i) for i in range(97,123)]:
                     # download
                     response = urllib.request.urlopen(filename)
                     filecontents = response.read()
